@@ -14,7 +14,7 @@ sltest.testmanager.load(testFilePath);  % <- 파일 로드만 함
 resultSet = sltest.testmanager.run();  % <- 인자 없음!
 
 % 4. 결과 저장 폴더 생성
-resultFolder = fullfile(pwd, 'Test Result');
+resultFolder = fullfile(pwd, 'Test_Result');
 if ~exist(resultFolder, 'dir')
     mkdir(resultFolder);
 end
