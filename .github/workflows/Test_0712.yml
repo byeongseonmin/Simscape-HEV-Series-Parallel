@@ -8,7 +8,7 @@ on:
 jobs:
   run-matlab-tests:
     name: Run MATLAB Simulink Tests
-    runs-on: [self-hosted, matlab]
+    runs-on: self-hosted
 
     steps:
       - name: Checkout Repository
