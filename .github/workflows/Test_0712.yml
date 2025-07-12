@@ -1,0 +1,24 @@
+name: Run Simulink Test on Push
+
+on:
+  push:
+    branches:
+      - Simscape-HEV-Series-Parallel
+
+jobs:
+  run-matlab-tests:
+    name: Run MATLAB Simulink Tests
+    runs-on: [self-hosted, matlab]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run MATLAB Test
+        run: matlab -batch "Test_0712"
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: Simulink-Test-Results
+          path: Simscape-HEV-Series-Parallel/Test Result
