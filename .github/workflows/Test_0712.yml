@@ -3,7 +3,7 @@ name: Run Simulink Test on Push
 on:
   push:
     branches:
-      - Simscape-HEV-Series-Parallel
+      - Test_0712
 
 jobs:
   run-matlab-tests:
