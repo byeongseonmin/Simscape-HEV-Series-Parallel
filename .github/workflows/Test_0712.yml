@@ -17,8 +17,15 @@ jobs:
       - name: Run MATLAB Test
         run: matlab -batch "Test_0712"
 
+      - name: Debug: Check if result files exist
+        run: |
+          echo "::group::Check contents of Test_Result"
+          ls -l Simscape-HEV-Series-Parallel/Test_Result || echo "Directory missing"
+          echo "::endgroup::"
+
+
       - name: Upload Test Results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: Simulink-Test-Results
           path: Simscape-HEV-Series-Parallel/Simscape-HEV-Series-Parallel/Test_Result/**
