@@ -24,4 +24,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Simulink-Test-Results
-          path: Simscape-HEV-Series-Parallel/Simscape-HEV-Series-Parallel/Test_Result/**
+          path: Test_Result/**
