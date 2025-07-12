@@ -6,21 +6,21 @@ import sltest.testmanager.*
 projectPath = fullfile(pwd, 'HEV_SeriesParallel.prj');
 openProject(projectPath);
 
-% 2. 테스트 파일 로드 및 실행
+% 2. 테스트 파일 경로
 testFilePath = fullfile(pwd, 'Scripts_Data', 'HEV_MODEL_TestManager.mldatx');
-tf = TestFile(testFilePath);
-resultSet = run(tf);
 
-% 3. 결과 저장 폴더 생성
+% 3. 테스트 실행
+resultSet = sltest.testmanager.run(testFilePath);
+
+% 4. 결과 저장 폴더 생성
 resultFolder = fullfile(pwd, 'Test Result');
 if ~exist(resultFolder, 'dir')
     mkdir(resultFolder);
 end
 
-% 4. 결과 저장 (mldatx + JUnit 형식)
-exportResults(resultSet, fullfile(resultFolder, 'HEV_MODEL_TestResult.mldatx'));
-exportResults(resultSet, fullfile(resultFolder, 'HEV_MODEL_TestResult.xml'), 'ExportFormat', 'JUnit');
+% 5. 결과 저장
+sltest.testmanager.exportResults(resultSet, fullfile(resultFolder, 'HEV_MODEL_TestResult.mldatx'));
+sltest.testmanager.exportResults(resultSet, fullfile(resultFolder, 'HEV_MODEL_TestResult.xml'), 'ExportFormat', 'JUnit');
 
-% 5. 후처리
-clear;
+% 6. 후처리
 sltest.testmanager.clear;
